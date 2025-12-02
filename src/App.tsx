@@ -14,7 +14,10 @@ function App() {
   return (
     <div className="flex min-h-screen flex-col bg-transparent text-slate-50">
       <Navbar />
-      <main key={location.pathname} className="mx-auto flex-1 max-w-6xl px-6 pb-16 pt-10 lg:pt-14">
+      <main
+        key={location.pathname}
+        className="mx-auto flex w-full flex-1 max-w-screen-xl px-4 pb-16 pt-10 sm:px-6 md:pt-12 lg:pt-14"
+      >
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/experience" element={<Experience />} />

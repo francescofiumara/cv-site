@@ -14,7 +14,7 @@ export default function Cv() {
         <iframe
           title="CV Francesco Fiumara"
           src="/cv.html"
-          className="h-[1200px] w-full"
+          className="block w-full min-h-[520px] sm:min-h-[720px] lg:min-h-[960px]"
           loading="lazy"
         />
       </div>

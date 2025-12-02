@@ -50,7 +50,7 @@ export default function Contact() {
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-400">{item.label}</div>
                 <div className="font-display text-lg font-semibold">{item.value}</div>
               </div>
-              <span className="text-sm text-teal-200">→</span>
+              <span className="text-sm text-teal-200">&rarr;</span>
             </a>
           ))}
         </div>
