@@ -12,8 +12,7 @@ npm install
 ```
 
 ### Variabili ambiente
-- Copia `.env.example` in `.env` e regola l’endpoint API se diverso da default:
-  - `VITE_API_BASE_URL=http://localhost:5051`
+- `VITE_API_BASE_URL=http://localhost:5051`
 
 ## Comandi
 - `npm run dev:full` – avvia frontend (5173) + API (5051) in parallelo.
@@ -27,8 +26,4 @@ npm install
 Progetto backend: `api/` (minimal API .NET 8).
 - `GET /api/projects`
 - `GET /api/skills`
-- CORS: consente `http://localhost:5173` (config in `api/appsettings.json`).
-
-## Note contenuti
-- Immagine hero: `public/headshot.jpg` (sostituire con il proprio file).
-- Contatti/CTA: aggiornare mailto, GitHub/LinkedIn e `public/cv.pdf` se disponibile. 
+- CORS: consente `http://localhost:5173`.
