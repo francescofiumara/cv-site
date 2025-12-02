@@ -14,7 +14,7 @@ api/bin
 api/obj
 api/publish
 .env
-*.local
+.env.*.local
 
 # Editor directories and files
 .vscode/*
