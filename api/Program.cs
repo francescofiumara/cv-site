@@ -1,29 +1,47 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
+// CORS: leggi gli allowed origins da configurazione
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() 
+                     ?? Array.Empty<string>();
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins(allowedOrigins.Length > 0 ? allowedOrigins : ["http://localhost:5173"])
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy
+            .WithOrigins(
+                allowedOrigins.Length > 0
+                    ? allowedOrigins
+                    : new[] { "http://localhost:5173" } // fallback per sviluppo
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
+// 🔹 Imposta la porta leggendo la variabile d'ambiente PORT (Render la fornisce)
+//    Se non c'è, usa 5000 in locale
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 var app = builder.Build();
 
+// Swagger solo in Development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// CORS prima delle endpoint
 app.UseCors();
-app.UseHttpsRedirection();
+
+// In hosting gestito (Render ecc.) non serve forzare l'HTTPS qui
+// app.UseHttpsRedirection();
 
 var projects = new List<Project>
 {
@@ -39,6 +57,7 @@ var skills = new SkillsProfile(
     ["Clean Architecture", "Code Review", "CI/CD", "Agile"]
 );
 
+// Endpoint
 app.MapGet("/api/projects", () => Results.Ok(projects))
    .WithName("GetProjects")
    .WithOpenApi();
