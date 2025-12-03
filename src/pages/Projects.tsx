@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionHeader from '../components/SectionHeader'
 import ProjectCard from '../components/ProjectCard'
+import { projects as staticProjects } from '../data/projects'
+import { skills as staticSkills } from '../data/skills'
 import { fetchProjects, fetchSkills, type Project as ApiProject, type SkillsProfile } from '../lib/api'
 
 let cachedProjects: ApiProject[] = []
@@ -9,6 +11,7 @@ let cachedSkills: SkillsProfile | null = null
 let hasFetched = false
 
 type SkillBlock = { title: string; items: string[] }
+const FALLBACK_TIMEOUT_MS = 4500
 
 export default function Projects() {
   const [projectList, setProjectList] = useState<ApiProject[]>(cachedProjects)
@@ -18,24 +21,56 @@ export default function Projects() {
 
   useEffect(() => {
     if (hasFetched) return
+    let timeoutId: number | undefined
+    let cancelled = false
+
+    const withTimeout = <T,>(promise: Promise<T>): Promise<T> =>
+      new Promise<T>((resolve, reject) => {
+        timeoutId = window.setTimeout(() => reject(new Error('timeout')), FALLBACK_TIMEOUT_MS)
+        promise
+          .then((value) => {
+            clearTimeout(timeoutId)
+            resolve(value)
+          })
+          .catch((err) => {
+            clearTimeout(timeoutId)
+            reject(err)
+          })
+      })
+
     const load = async () => {
       setError(null)
       try {
-        const [apiProjects, apiSkills] = await Promise.all([fetchProjects(), fetchSkills()])
+        const [apiProjects, apiSkills] = await withTimeout(
+          Promise.all([fetchProjects(), fetchSkills()])
+        )
+        if (cancelled) return
         cachedProjects = apiProjects
         cachedSkills = apiSkills
         hasFetched = true
         setProjectList(apiProjects)
         setSkillProfile(apiSkills)
       } catch (err) {
-        setError('Backend non raggiungibile al momento. Riprova più tardi.')
-        setProjectList([])
-        setSkillProfile(null)
+        if (cancelled) return
+        const isTimeout = err instanceof Error && err.message === 'timeout'
+        const fallbackMessage = isTimeout
+          ? 'Il servizio si sta avviando: intanto ti mostro una copia statica dei progetti.'
+          : 'Backend non raggiungibile al momento. Ti mostro una copia statica dei progetti.'
+        setError(fallbackMessage)
+        setProjectList(staticProjects)
+        setSkillProfile(staticSkills)
       } finally {
+        if (timeoutId) clearTimeout(timeoutId)
+        if (cancelled) return
         setLoading(false)
       }
     }
     load()
+
+    return () => {
+      cancelled = true
+      if (timeoutId) clearTimeout(timeoutId)
+    }
   }, [])
 
   const skillBlocks: SkillBlock[] = useMemo(() => {
