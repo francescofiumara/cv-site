@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SectionHeader from '../components/SectionHeader'
 import { motion } from 'framer-motion'
+import { prefetchProjectsData } from './Projects'
 
 const highlights = [
   { label: 'Fullstack', value: '.NET, React e altro ancora' },
@@ -15,6 +17,10 @@ const valuePoints = [
 ]
 
 export default function Home() {
+  useEffect(() => {
+    prefetchProjectsData()
+  }, [])
+
   return (
     <div className="space-y-12">
       <section className="overflow-hidden rounded-4xl border border-white/5 bg-gradient-to-br from-teal-700/40 via-ink to-midnight p-6 shadow-soft sm:p-8">

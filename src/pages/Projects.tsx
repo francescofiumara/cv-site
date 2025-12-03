@@ -13,6 +13,27 @@ let hasFetched = false
 type SkillBlock = { title: string; items: string[] }
 const FALLBACK_TIMEOUT_MS = 4500
 
+export async function prefetchProjectsData() {
+  if (hasFetched) return
+  let timeoutId: number | undefined
+  try {
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      timeoutId = window.setTimeout(() => reject(new Error('timeout')), FALLBACK_TIMEOUT_MS)
+    })
+    const [apiProjects, apiSkills] = (await Promise.race([
+      Promise.all([fetchProjects(), fetchSkills()]),
+      timeoutPromise,
+    ])) as [ApiProject[], SkillsProfile]
+    cachedProjects = apiProjects
+    cachedSkills = apiSkills
+    hasFetched = true
+  } catch {
+    // Ignora: se fallisce, lasceremo che la pagina Projects gestisca il fallback
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId)
+  }
+}
+
 export default function Projects() {
   const [projectList, setProjectList] = useState<ApiProject[]>(cachedProjects)
   const [skillProfile, setSkillProfile] = useState<SkillsProfile | null>(cachedSkills)
