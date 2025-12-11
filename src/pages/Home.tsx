@@ -54,12 +54,26 @@ export default function Home() {
               >
                 Contattami
               </Link>
-              <a
-                href="/cv.pdf"
-                className="rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-teal-300/50 hover:text-teal-50"
-              >
-                Scarica CV
-              </a>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="/cv.pdf"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-teal-300/50 hover:text-teal-50"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span aria-hidden="true">🇮🇹</span>
+                  <span>Scarica CV</span>
+                </a>
+                <a
+                  href="/cv_eng.pdf"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-teal-300/50 hover:text-teal-50"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span aria-hidden="true">🇬🇧</span>
+                  <span>Download CV</span>
+                </a>
+              </div>
             </div>
           </motion.div>
           <motion.div

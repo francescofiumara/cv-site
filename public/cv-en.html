@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV - Francesco Fiumara</title>
+  <style>
+    :root {
+      --ink: #0f1b2d;
+      --accent: #0fa58e;
+      --muted: #6b778a;
+      --border: #d7dce3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0 auto;
+      max-width: 860px;
+      padding: 28px 24px 36px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: #f7f9fc;
+    }
+    header {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    img.photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #e5edf3;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      letter-spacing: 0.02em;
+    }
+    .contact {
+      display: grid;
+      gap: 6px;
+      font-size: 15px;
+    }
+    .contact a { color: var(--ink); text-decoration: none; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 768px) {
+      header { grid-template-columns: 1fr; justify-items: start; }
+      .grid { grid-template-columns: 1fr; }
+      img.photo { width: 140px; height: 140px; }
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: 12px;
+    }
+    .item {
+      margin-bottom: 14px;
+    }
+    .item:last-child { margin-bottom: 0; }
+    .title {
+      margin: 0;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .subtitle {
+      margin: 2px 0 4px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .time {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    p { margin: 0 0 8px; line-height: 1.45; }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin-bottom: 6px; line-height: 1.4; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--ink);
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="headshot.jpg" alt="Francesco Fiumara" class="photo" />
+    <div>
+      <h1>Francesco Fiumara</h1>
+      <div class="contact">
+        <span>Tel: +39 3668769458</span>
+        <span>Email: <a href="mailto:francesco.fiumara97@gmail.com">francesco.fiumara97@gmail.com</a></span>
+        <span>Location: Modena (MO)</span>
+        <span>LinkedIn: <a href="https://www.linkedin.com/in/francescofiumara/">linkedin.com/in/francescofiumara</a></span>
+        <span>GitHub: <a href="https://github.com/francescofiumara">github.com/francescofiumara</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div>
+      <div class="section">
+        <h2>Profile</h2>
+        <p>.NET developer with a consulting background and a degree in economics (a solid mix).</p>
+      </div>
+      <div class="section">
+        <h2>Skills</h2>
+        <div class="pill-row">
+          <span class="pill">.NET 8 / C#</span>
+          <span class="pill">ASP.NET Core</span>
+          <span class="pill">SQL Server</span>
+          <span class="pill">Avalonia</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Azure Functions</span>
+          <span class="pill">Dynamics 365</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Power Apps</span>
+          <span class="pill">Linux</span>
+          <span class="pill">CI/CD</span>
+          <span class="pill">Git</span>
+        </div>
+      </div>
+      <div class="section">
+        <h2>Languages</h2>
+        <ul>
+          <li>Italian: native</li>
+          <li>English: intermediate (written and spoken)</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>Education</h2>
+        <div class="item">
+          <p class="title">Bachelor's Degree in Economics and Finance</p>
+          <p class="subtitle">Università di Modena e Reggio Emilia</p>
+          <p class="time">2017 - 2020</p>
+        </div>
+        <div class="item">
+          <p class="title">High School Diploma in Computer Science and Telecommunications</p>
+          <p class="subtitle">I.T.I.S. E. Fermi</p>
+          <p class="time">2011 - 2016</p>
+        </div>
+      </div>
+      <div class="section">
+        <h2>Projects</h2>
+        <div class="item">
+          <p class="title">Weigh-price labeling system</p>
+          <p class="subtitle">Avalonia (Linux) - .NET - SQL Server</p>
+          <p>Enhancements on a new machine, operator UI, and integrations with the existing production line.</p>
+        </div>
+        <div class="item">
+          <p class="title">Dynamics consulting</p>
+          <p class="subtitle">C#/JavaScript APIs - Power BI - Power Apps - Azure Functions</p>
+          <p>Planner extensions, integrations, and reporting for business processes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h2>Experience</h2>
+        <div class="item">
+          <p class="title">Software Developer</p>
+          <p class="subtitle">Soc. Cooperativa Bilanciai</p>
+          <p class="time">Sep 2024 - Present</p>
+          <ul>
+            <li>Building a new weigh-price labeling system on Linux, SQL Server, and .NET with an Avalonia UI.</li>
+            <li>Integrating with existing services and improving the operator experience.</li>
+            <li>Supporting enhancements and stability in production.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <p class="title">Software Developer</p>
+          <p class="subtitle">Apex SRL</p>
+          <p class="time">2022 - 2024</p>
+          <ul>
+            <li>Dynamics 365 integrations with C# and JavaScript APIs (planner and extensions).</li>
+            <li>Automation and reporting with Power BI, Power Apps, and Azure Functions.</li>
+            <li>Customer support on custom solutions and Agile delivery.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <p class="title">Bank Teller</p>
+          <p class="subtitle">BPER Banca</p>
+          <p class="time">2020 - 2021</p>
+          <ul>
+            <li>Handled branch transactions and customer relations.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <p class="title">System Integrator</p>
+          <p class="subtitle">Sielte SPA</p>
+          <p class="time">2016 - 2017</p>
+          <ul>
+            <li>Voice/data telecom installations, operator migrations, and on-site technical assistance.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section" style="margin-top: 20px; text-align: left;">
+    <p style="font-size: 12px; color: var(--muted);">
+      I authorize the processing of my personal data in accordance with Italian Legislative Decree 196/2003 and EU Regulation 2016/679 (GDPR).
+    </p>
+  </div>
+</body>
+</html>
