@@ -14,6 +14,34 @@ const navClasses =
   'rounded-full px-3 py-2 text-sm font-semibold tracking-tight text-slate-200 transition duration-200 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300'
 const activeClasses = 'bg-white text-slate-950 hover:bg-white hover:text-slate-950'
 
+function ThemeIcon({ darkMode }: { darkMode: boolean }) {
+  if (darkMode) {
+    return (
+      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M12 3v2.2M12 18.8V21M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M3 12h2.2M18.8 12H21M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M20.2 14.4A7.5 7.5 0 0 1 9.6 3.8 8.5 8.5 0 1 0 20.2 14.4Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 function getInitialTheme() {
   if (typeof window === 'undefined') return false
   const savedTheme = window.localStorage.getItem('theme')
@@ -63,10 +91,11 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDarkMode((value) => !value)}
-              className="rounded-full border border-white/10 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
               aria-label={darkMode ? 'Passa al tema chiaro' : 'Passa al tema scuro'}
             >
-              {darkMode ? 'Chiaro' : 'Scuro'}
+              <ThemeIcon darkMode={darkMode} />
+              <span>Tema {darkMode ? 'chiaro' : 'scuro'}</span>
             </button>
           </div>
 
@@ -131,8 +160,10 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setDarkMode((value) => !value)}
-                className="mt-3 rounded-lg border border-white/10 bg-white/10 px-3 py-3 text-left text-base font-semibold text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
+                className="mt-3 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-3 py-3 text-left text-base font-semibold text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
+                aria-label={darkMode ? 'Passa al tema chiaro' : 'Passa al tema scuro'}
               >
+                <ThemeIcon darkMode={darkMode} />
                 Tema {darkMode ? 'chiaro' : 'scuro'}
               </button>
             </div>
