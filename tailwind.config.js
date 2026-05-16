@@ -26,7 +26,7 @@ export default {
         body: ['"Manrope"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 20px 60px rgba(10, 35, 66, 0.2)',
+        soft: '0 18px 50px rgba(15, 23, 42, 0.08)',
       },
     },
   },

@@ -6,10 +6,11 @@
 
 :root {
   font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at 20% 25%, rgba(15, 165, 142, 0.1), transparent 28%),
-    radial-gradient(circle at 75% 10%, rgba(255, 159, 67, 0.08), transparent 24%),
-    #0c1221;
-  color: #e9eef6;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(15, 165, 142, 0.12), transparent 28%),
+    radial-gradient(circle at 82% 8%, rgba(255, 159, 67, 0.1), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  color: #0f172a;
 }
 
 body {
@@ -37,5 +38,20 @@ a {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+::selection {
+  background: rgba(15, 165, 142, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

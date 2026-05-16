@@ -6,10 +6,10 @@ type Props = {
 
 export default function SectionHeader({ eyebrow, title, subtitle }: Props) {
   return (
-    <div className="mb-8">
-      <div className="text-sm font-semibold uppercase tracking-[0.4em] text-teal-200">{eyebrow}</div>
-      <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
-      {subtitle && <p className="mt-3 max-w-3xl text-lg text-slate-300">{subtitle}</p>}
+    <div className="mb-8 max-w-3xl">
+      <div className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">{eyebrow}</div>
+      <h2 className="mt-2 font-display text-3xl font-semibold text-slate-950 sm:text-4xl">{title}</h2>
+      {subtitle && <p className="mt-3 text-base leading-7 text-slate-600 sm:text-lg">{subtitle}</p>}
     </div>
   )
 }

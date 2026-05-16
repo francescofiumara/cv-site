@@ -23,15 +23,15 @@ export default function Contact() {
         subtitle="Contattatemi per scoprire di più su di me"
       />
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border border-white/5 bg-white/5 p-8 shadow-soft">
-          <h3 className="font-display text-2xl font-semibold text-white">Scrivimi per conoscermi meglio</h3>
-          <p className="mt-3 text-slate-200">
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
+          <h3 className="font-display text-2xl font-semibold text-slate-950">Scrivimi per conoscermi meglio</h3>
+          <p className="mt-3 leading-7 text-slate-600">
             Pronto per una nuova sfida, unendo competenze già apprese e voglia di imparare nuove tecnologie.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href="mailto:francesco.fiumara97@gmail.com"
-              className="rounded-full bg-teal-500 px-5 py-3 text-sm font-semibold text-ink shadow-lg shadow-teal-500/30 transition hover:-translate-y-0.5 hover:bg-teal-400"
+              className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-300 transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
             >
               Scrivimi
             </a>
@@ -42,15 +42,18 @@ export default function Contact() {
             <a
               key={item.label}
               href={item.href}
-              className="flex items-center justify-between rounded-3xl border border-white/5 bg-white/5 p-5 text-white transition hover:-translate-y-1 hover:border-teal-300/40"
+              className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-5 text-slate-950 shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
               target={item.href.startsWith('http') ? '_blank' : undefined}
               rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+              aria-label={`Apri contatto ${item.label}: ${item.value}`}
             >
               <div>
-                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">{item.label}</div>
-                <div className="font-display text-lg font-semibold">{item.value}</div>
+                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">{item.label}</div>
+                <div className="break-all font-display text-lg font-semibold">{item.value}</div>
               </div>
-              <span className="text-sm text-teal-200">&rarr;</span>
+              <span className="ml-4 text-sm text-teal-700" aria-hidden="true">
+                &rarr;
+              </span>
             </a>
           ))}
         </div>

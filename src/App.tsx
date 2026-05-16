@@ -12,11 +12,11 @@ function App() {
   const location = useLocation()
 
   return (
-    <div className="flex min-h-screen flex-col bg-transparent text-slate-50">
+    <div className="flex min-h-screen flex-col bg-transparent text-slate-900">
       <Navbar />
       <main
         key={location.pathname}
-        className="mx-auto flex w-full flex-1 max-w-screen-xl px-4 pb-16 pt-10 sm:px-6 md:pt-12 lg:pt-14"
+        className="mx-auto flex w-full max-w-screen-xl flex-1 px-4 pb-16 pt-8 sm:px-6 md:pt-10 lg:pt-12"
       >
         <Routes location={location}>
           <Route path="/" element={<Home />} />

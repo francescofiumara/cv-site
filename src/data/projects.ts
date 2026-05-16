@@ -8,24 +8,24 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Observability Platform',
+    title: 'Peso-prezzatrice next-gen',
     description:
-      'Dashboard real-time per monitorare servizi .NET e React con metriche custom, alerting e log correlati.',
-    impact: '-35% MTTR grazie a tracing distribuito e alert mirati',
-    stack: ['.NET 8', 'React', 'PostgreSQL', 'Azure', 'SignalR'],
+      'Sviluppo nuova macchina in Bilanciai con stack Linux, SQL Server, .NET e UI in Avalonia per interfaccia operatore.',
+    impact: 'Work in progress: feature evolutive e integrazione con linea esistente',
+    stack: ['.NET 8', 'C#', 'SQL Server', 'Avalonia', 'Linux'],
   },
   {
-    title: 'Customer Onboarding',
+    title: 'Soluzioni Dynamics 365',
     description:
-      'Wizard multi-step con validazioni condivise API/UI, integrazione CRM e policy di caching per ridurre i tempi di risposta.',
-    impact: '-40% tempo di completamento onboarding e +20% conversione',
-    stack: ['.NET 7', 'React', 'Redis', 'Azure AD', 'Cypress'],
+      'Progetti di consulenza con integrazioni custom: API C#, JavaScript per estensioni e connettori verso servizi interni.',
+    impact: 'Delivery di feature su ciclo Agile con team clienti',
+    stack: ['C#', '.NET', 'Dynamics 365', 'JavaScript'],
   },
   {
-    title: 'Data Sync Service',
+    title: 'Reporting & dati',
     description:
-      'Microservizio per sincronizzare ordini tra ERP e e-commerce, con retry/backoff e dead-letter queue.',
-    impact: '99.9% consegne dati e code senza backlog grazie a resilienza e osservabilità',
-    stack: ['.NET 8', 'MassTransit', 'RabbitMQ', 'Docker', 'k6'],
+      'Integrazioni e pipeline dati con Power BI, Azure Functions e Power Apps a supporto dei flussi aziendali.',
+    impact: 'Dashboard e automazioni operative',
+    stack: ['Power BI', 'Azure Functions', 'Power Apps', 'SQL'],
   },
 ]

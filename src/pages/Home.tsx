@@ -1,13 +1,11 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SectionHeader from '../components/SectionHeader'
 import { motion } from 'framer-motion'
-import { prefetchProjectsData } from './Projects'
 
 const highlights = [
-  { label: 'Fullstack', value: '.NET, React e altro ancora' },
-  { label: 'Agile', value: 'Team player, code review' },
-  { label: 'UX & Quality', value: 'Test automation, performance' },
+  { label: 'Focus', value: '.NET, React, integrazioni' },
+  { label: 'Metodo', value: 'Agile, code review, delivery' },
+  { label: 'Qualita', value: 'Performance, UX, manutenzione' },
 ]
 
 const valuePoints = [
@@ -17,13 +15,9 @@ const valuePoints = [
 ]
 
 export default function Home() {
-  useEffect(() => {
-    prefetchProjectsData()
-  }, [])
-
   return (
     <div className="space-y-12">
-      <section className="overflow-hidden rounded-4xl border border-white/5 bg-gradient-to-br from-teal-700/40 via-ink to-midnight p-6 shadow-soft sm:p-8">
+      <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <motion.div
             className="max-w-2xl space-y-6"
@@ -31,44 +25,46 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <p className="text-base font-semibold uppercase tracking-[0.35em] text-teal-100 sm:text-lg">
-              Fullstack Developer
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-700">
+              Software Developer / Fullstack Developer
             </p>
-            <h1 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
-              Ciao, sono Francesco. Sviluppatore Software con un background insolito.
+            <h1 className="font-display text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+              Francesco Fiumara, sviluppo software tra .NET, React e integrazioni.
             </h1>
-            <p className="text-base text-slate-200 sm:text-lg">
+            <p className="text-base leading-8 text-slate-600 sm:text-lg">
               Abbino back-end robusti e front-end curati: API pulite, performance misurabili, UX piacevoli,
-              con attenzione a qualità e miglioramento continuo (questo è quello che mi dico la mattina davanti allo specchio).
+              con attenzione a qualità e miglioramento continuo.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 to="/projects"
-                className="rounded-full bg-teal-500 px-5 py-3 text-sm font-semibold text-ink shadow-lg shadow-teal-500/30 transition hover:-translate-y-0.5 hover:bg-teal-400"
+                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-300 transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
               >
                 Guarda progetti & skill
               </Link>
               <Link
                 to="/contact"
-                className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-teal-300/50 hover:text-teal-100"
+                className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
               >
                 Contattami
               </Link>
               <div className="flex flex-wrap gap-2">
                 <a
                   href="/cv.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-teal-300/50 hover:text-teal-50"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Scarica il CV in italiano"
                 >
                   <span aria-hidden="true">🇮🇹</span>
                   <span>Scarica CV</span>
                 </a>
                 <a
                   href="/cv_eng.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-teal-300/50 hover:text-teal-50"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Scarica il CV in inglese"
                 >
                   <span aria-hidden="true">🇬🇧</span>
                   <span>Download CV</span>
@@ -82,18 +78,19 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             className="relative w-full max-w-sm"
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/30 to-accent/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-teal-500/10">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl shadow-slate-200/80">
               <img
                 src="/headshot.jpg"
-                alt="Francesco Fiumara portrait"
+                alt="Ritratto professionale di Francesco Fiumara"
                 className="aspect-[4/5] w-full object-cover"
+                width="384"
+                height="480"
               />
             </div>
           </motion.div>
         </div>
         <motion.div
-          className="mt-6 grid gap-3 rounded-3xl bg-white/5 p-5 sm:grid-cols-3 sm:gap-4"
+          className="mt-8 grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-3 sm:gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -102,12 +99,12 @@ export default function Home() {
           {highlights.map((item) => (
             <motion.div
               key={item.label}
-              className="rounded-2xl border border-white/5 bg-white/5 px-4 py-5 text-center"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-5 text-center shadow-sm"
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ type: 'spring', stiffness: 220, damping: 18 }}
             >
-              <div className="text-xs uppercase tracking-[0.2em] text-slate-400">{item.label}</div>
-              <div className="mt-2 font-display text-lg font-semibold text-white">{item.value}</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-slate-500">{item.label}</div>
+              <div className="mt-2 font-display text-lg font-semibold text-slate-950">{item.value}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -134,7 +131,7 @@ export default function Home() {
           {valuePoints.map((point) => (
             <motion.div
               key={point}
-              className="rounded-3xl border border-white/5 bg-white/5 p-6 text-slate-200 shadow-soft transition hover:-translate-y-1 hover:border-teal-300/40"
+              className="rounded-2xl border border-slate-200 bg-white p-6 leading-7 text-slate-600 shadow-soft transition hover:-translate-y-1 hover:border-teal-300"
               variants={{
                 hidden: { opacity: 0, y: 16 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },

@@ -7,95 +7,52 @@ import { skills as staticSkills } from '../data/skills'
 import { fetchProjects, fetchSkills, type Project as ApiProject, type SkillsProfile } from '../lib/api'
 
 let cachedProjects: ApiProject[] = []
-let cachedSkills: SkillsProfile | null = null
+let cachedSkills: SkillsProfile | undefined
 let hasFetched = false
 
 type SkillBlock = { title: string; items: string[] }
-const FALLBACK_TIMEOUT_MS = 4500
-
-export async function prefetchProjectsData() {
-  if (hasFetched) return
-  let timeoutId: number | undefined
-  try {
-    const timeoutPromise = new Promise<never>((_, reject) => {
-      timeoutId = window.setTimeout(() => reject(new Error('timeout')), FALLBACK_TIMEOUT_MS)
-    })
-    const [apiProjects, apiSkills] = (await Promise.race([
-      Promise.all([fetchProjects(), fetchSkills()]),
-      timeoutPromise,
-    ])) as [ApiProject[], SkillsProfile]
-    cachedProjects = apiProjects
-    cachedSkills = apiSkills
-    hasFetched = true
-  } catch {
-    // Ignora: se fallisce, lasceremo che la pagina Projects gestisca il fallback
-  } finally {
-    if (timeoutId) clearTimeout(timeoutId)
-  }
-}
 
 export default function Projects() {
-  const [projectList, setProjectList] = useState<ApiProject[]>(cachedProjects)
-  const [skillProfile, setSkillProfile] = useState<SkillsProfile | null>(cachedSkills)
+  const [projectList, setProjectList] = useState<ApiProject[]>(
+    cachedProjects.length > 0 ? cachedProjects : staticProjects
+  )
+  const [skillProfile, setSkillProfile] = useState<SkillsProfile>(cachedSkills ?? staticSkills)
   const [loading, setLoading] = useState(!hasFetched)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (hasFetched) return
-    let timeoutId: number | undefined
     let cancelled = false
 
-    const withTimeout = <T,>(promise: Promise<T>): Promise<T> =>
-      new Promise<T>((resolve, reject) => {
-        timeoutId = window.setTimeout(() => reject(new Error('timeout')), FALLBACK_TIMEOUT_MS)
-        promise
-          .then((value) => {
-            clearTimeout(timeoutId)
-            resolve(value)
-          })
-          .catch((err) => {
-            clearTimeout(timeoutId)
-            reject(err)
-          })
-      })
-
     const load = async () => {
-      setError(null)
+      setError('')
       try {
-        const [apiProjects, apiSkills] = await withTimeout(
-          Promise.all([fetchProjects(), fetchSkills()])
-        )
+        const [apiProjects, apiSkills] = await Promise.all([fetchProjects(), fetchSkills()])
         if (cancelled) return
         cachedProjects = apiProjects
         cachedSkills = apiSkills
-        hasFetched = true
         setProjectList(apiProjects)
         setSkillProfile(apiSkills)
-      } catch (err) {
+      } catch {
         if (cancelled) return
-        const isTimeout = err instanceof Error && err.message === 'timeout'
-        const fallbackMessage = isTimeout
-          ? 'Il servizio si sta avviando: intanto ti mostro una copia statica dei progetti.'
-          : 'Backend non raggiungibile al momento. Ti mostro una copia statica dei progetti.'
-        setError(fallbackMessage)
+        cachedProjects = staticProjects
+        cachedSkills = staticSkills
+        setError('Backend non raggiungibile al momento. Ti mostro la versione statica dei contenuti.')
         setProjectList(staticProjects)
         setSkillProfile(staticSkills)
       } finally {
-        if (timeoutId) clearTimeout(timeoutId)
-        if (cancelled) return
-        setLoading(false)
+        hasFetched = true
+        if (!cancelled) setLoading(false)
       }
     }
     load()
 
     return () => {
       cancelled = true
-      if (timeoutId) clearTimeout(timeoutId)
     }
   }, [])
 
   const skillBlocks: SkillBlock[] = useMemo(() => {
-    if (!skillProfile) return []
     const source = skillProfile
     return [
       { title: 'Backend', items: source.backend },
@@ -113,13 +70,17 @@ export default function Projects() {
           title="Selezione di lavori recenti"
           subtitle="Un po' di progetti a cui ho lavorato in questi anni di servizio"
         />
-        {error && <p className="text-sm text-accent">{error}</p>}
+        {error && (
+          <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-900">
+            {error}
+          </p>
+        )}
         <div className="mt-4 grid gap-6 md:grid-cols-2" aria-busy={loading}>
           {loading &&
             Array.from({ length: 4 }).map((_, idx) => (
               <div
                 key={idx}
-                className="h-44 animate-pulse rounded-3xl border border-white/5 bg-white/5"
+                className="h-44 animate-pulse rounded-2xl border border-slate-200 bg-white"
                 aria-hidden
               />
             ))}
@@ -136,7 +97,7 @@ export default function Projects() {
             </motion.div>
           )}
           {!loading && projectList.length === 0 && !error && (
-            <div className="rounded-3xl border border-white/5 bg-white/5 p-6 text-slate-200">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">
               Nessun progetto disponibile al momento.
             </div>
           )}
@@ -154,7 +115,7 @@ export default function Projects() {
             Array.from({ length: 4 }).map((_, idx) => (
               <div
                 key={idx}
-                className="h-32 animate-pulse rounded-3xl border border-white/5 bg-white/5"
+                className="h-32 animate-pulse rounded-2xl border border-slate-200 bg-white"
                 aria-hidden
               />
             ))}
@@ -168,17 +129,17 @@ export default function Projects() {
               {skillBlocks.map((block) => (
                 <motion.div
                   key={block.title}
-                  className="rounded-3xl border border-white/5 bg-white/5 p-6 shadow-soft"
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                 >
-                  <h3 className="font-display text-xl font-semibold text-white">{block.title}</h3>
+                  <h3 className="font-display text-xl font-semibold text-slate-950">{block.title}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {block.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-teal-100"
+                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700"
                       >
                         {item}
                       </span>
@@ -189,7 +150,7 @@ export default function Projects() {
             </motion.div>
           )}
           {!loading && skillBlocks.length === 0 && (
-            <div className="rounded-3xl border border-white/5 bg-white/5 p-6 text-slate-200">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">
               Stack non disponibile al momento.
             </div>
           )}

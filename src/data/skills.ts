@@ -1,6 +1,6 @@
 export const skills = {
-  backend: ['.NET 8', 'C#', 'ASP.NET Core', 'EF Core', 'Minimal API', 'gRPC', 'MassTransit', 'CQRS'],
-  frontend: ['React', 'TypeScript', 'Tailwind', 'React Query', 'Vite', 'Jest', 'Cypress'],
-  cloud: ['Azure', 'Docker', 'Kubernetes (basics)', 'PostgreSQL', 'SQL Server', 'Redis', 'Azure DevOps'],
-  practices: ['Clean Architecture', 'SOLID', 'Code Review', 'Automated Testing', 'CI/CD', 'Agile/Scrum'],
+  backend: ['.NET', 'C#', 'ASP.NET Core', 'Minimal API'],
+  frontend: ['React', 'TypeScript', 'Tailwind', 'Vite', 'Avalonia'],
+  cloud: ['Azure', 'SQL Server', 'Azure DevOps', 'Power BI', 'Power Apps'],
+  practices: ['Clean Architecture', 'Code Review', 'CI/CD', 'Agile', 'Integrazioni software'],
 }
