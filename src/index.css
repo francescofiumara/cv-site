@@ -7,10 +7,20 @@
 :root {
   font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   background:
-    radial-gradient(circle at 16% 18%, rgba(15, 165, 142, 0.12), transparent 28%),
-    radial-gradient(circle at 82% 8%, rgba(255, 159, 67, 0.1), transparent 24%),
-    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    radial-gradient(circle at 12% 16%, rgba(15, 165, 142, 0.2), transparent 30%),
+    radial-gradient(circle at 86% 10%, rgba(255, 159, 67, 0.18), transparent 26%),
+    radial-gradient(circle at 70% 78%, rgba(56, 189, 248, 0.12), transparent 30%),
+    linear-gradient(180deg, #f4fbf9 0%, #eef4f8 46%, #f7efe5 100%);
   color: #0f172a;
+}
+
+:root.dark {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(38, 188, 168, 0.18), transparent 30%),
+    radial-gradient(circle at 86% 8%, rgba(255, 159, 67, 0.16), transparent 26%),
+    radial-gradient(circle at 72% 80%, rgba(14, 165, 233, 0.16), transparent 30%),
+    linear-gradient(180deg, #07111f 0%, #0c1728 48%, #151018 100%);
+  color: #e2e8f0;
 }
 
 body {

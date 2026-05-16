@@ -17,7 +17,7 @@ const valuePoints = [
 export default function Home() {
   return (
     <div className="space-y-12">
-      <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+      <section className="overflow-hidden rounded-2xl border border-white/70 bg-white/85 p-6 shadow-soft backdrop-blur sm:p-8 dark:border-white/10 dark:bg-slate-900/82">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <motion.div
             className="max-w-2xl space-y-6"
@@ -25,33 +25,33 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-700">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-700 dark:text-teal-200">
               Software Developer / Fullstack Developer
             </p>
-            <h1 className="font-display text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <h1 className="font-display text-4xl font-bold leading-tight text-slate-950 dark:text-white sm:text-5xl">
               Francesco Fiumara, sviluppo software tra .NET, React e integrazioni.
             </h1>
-            <p className="text-base leading-8 text-slate-600 sm:text-lg">
+            <p className="text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
               Abbino back-end robusti e front-end curati: API pulite, performance misurabili, UX piacevoli,
               con attenzione a qualità e miglioramento continuo.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 to="/projects"
-                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-300 transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-300 transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:bg-teal-400 dark:text-slate-950 dark:shadow-teal-950/30 dark:hover:bg-teal-300"
               >
                 Guarda progetti & skill
               </Link>
               <Link
                 to="/contact"
-                className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:border-teal-300"
               >
                 Contattami
               </Link>
               <div className="flex flex-wrap gap-2">
                 <a
                   href="/cv.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:border-white/10 dark:text-slate-200 dark:hover:border-teal-300 dark:hover:text-teal-100"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Scarica il CV in italiano"
@@ -61,7 +61,7 @@ export default function Home() {
                 </a>
                 <a
                   href="/cv_eng.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:border-white/10 dark:text-slate-200 dark:hover:border-teal-300 dark:hover:text-teal-100"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Scarica il CV in inglese"
@@ -78,7 +78,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             className="relative w-full max-w-sm"
           >
-            <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl shadow-slate-200/80">
+            <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-slate-100 shadow-xl shadow-slate-200/80 dark:border-white/10 dark:bg-slate-800 dark:shadow-slate-950/40">
               <img
                 src="/headshot.jpg"
                 alt="Ritratto professionale di Francesco Fiumara"
@@ -90,7 +90,7 @@ export default function Home() {
           </motion.div>
         </div>
         <motion.div
-          className="mt-8 grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-3 sm:gap-4"
+          className="mt-8 grid gap-3 rounded-2xl border border-white/70 bg-teal-50/70 p-4 sm:grid-cols-3 sm:gap-4 dark:border-white/10 dark:bg-white/5"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -99,12 +99,12 @@ export default function Home() {
           {highlights.map((item) => (
             <motion.div
               key={item.label}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-5 text-center shadow-sm"
+              className="rounded-xl border border-white/80 bg-white/80 px-4 py-5 text-center shadow-sm dark:border-white/10 dark:bg-slate-950/40"
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ type: 'spring', stiffness: 220, damping: 18 }}
             >
-              <div className="text-xs uppercase tracking-[0.18em] text-slate-500">{item.label}</div>
-              <div className="mt-2 font-display text-lg font-semibold text-slate-950">{item.value}</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">{item.label}</div>
+              <div className="mt-2 font-display text-lg font-semibold text-slate-950 dark:text-white">{item.value}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -131,7 +131,7 @@ export default function Home() {
           {valuePoints.map((point) => (
             <motion.div
               key={point}
-              className="rounded-2xl border border-slate-200 bg-white p-6 leading-7 text-slate-600 shadow-soft transition hover:-translate-y-1 hover:border-teal-300"
+              className="rounded-2xl border border-white/70 bg-white/85 p-6 leading-7 text-slate-600 shadow-soft backdrop-blur transition hover:-translate-y-1 hover:border-teal-300 dark:border-white/10 dark:bg-slate-900/82 dark:text-slate-300"
               variants={{
                 hidden: { opacity: 0, y: 16 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },

@@ -71,7 +71,7 @@ export default function Projects() {
           subtitle="Un po' di progetti a cui ho lavorato in questi anni di servizio"
         />
         {error && (
-          <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-900">
+          <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-900 dark:border-amber-300/20 dark:bg-amber-300/10 dark:text-amber-100">
             {error}
           </p>
         )}
@@ -80,7 +80,7 @@ export default function Projects() {
             Array.from({ length: 4 }).map((_, idx) => (
               <div
                 key={idx}
-                className="h-44 animate-pulse rounded-2xl border border-slate-200 bg-white"
+                className="h-44 animate-pulse rounded-2xl border border-white/70 bg-white/70 dark:border-white/10 dark:bg-white/10"
                 aria-hidden
               />
             ))}
@@ -97,7 +97,7 @@ export default function Projects() {
             </motion.div>
           )}
           {!loading && projectList.length === 0 && !error && (
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">
+            <div className="rounded-2xl border border-white/70 bg-white/85 p-6 text-slate-600 dark:border-white/10 dark:bg-slate-900/82 dark:text-slate-300">
               Nessun progetto disponibile al momento.
             </div>
           )}
@@ -115,7 +115,7 @@ export default function Projects() {
             Array.from({ length: 4 }).map((_, idx) => (
               <div
                 key={idx}
-                className="h-32 animate-pulse rounded-2xl border border-slate-200 bg-white"
+                className="h-32 animate-pulse rounded-2xl border border-white/70 bg-white/70 dark:border-white/10 dark:bg-white/10"
                 aria-hidden
               />
             ))}
@@ -129,17 +129,17 @@ export default function Projects() {
               {skillBlocks.map((block) => (
                 <motion.div
                   key={block.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft"
+                  className="rounded-2xl border border-white/70 bg-white/85 p-6 shadow-soft backdrop-blur dark:border-white/10 dark:bg-slate-900/82"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                 >
-                  <h3 className="font-display text-xl font-semibold text-slate-950">{block.title}</h3>
+                  <h3 className="font-display text-xl font-semibold text-slate-950 dark:text-white">{block.title}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {block.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700"
+                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700 dark:bg-white/10 dark:text-slate-200"
                       >
                         {item}
                       </span>
@@ -150,7 +150,7 @@ export default function Projects() {
             </motion.div>
           )}
           {!loading && skillBlocks.length === 0 && (
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">
+            <div className="rounded-2xl border border-white/70 bg-white/85 p-6 text-slate-600 dark:border-white/10 dark:bg-slate-900/82 dark:text-slate-300">
               Stack non disponibile al momento.
             </div>
           )}

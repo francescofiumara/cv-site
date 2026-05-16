@@ -12,7 +12,7 @@ function App() {
   const location = useLocation()
 
   return (
-    <div className="flex min-h-screen flex-col bg-transparent text-slate-900">
+    <div className="flex min-h-screen flex-col bg-transparent text-slate-900 dark:text-slate-100">
       <Navbar />
       <main
         key={location.pathname}

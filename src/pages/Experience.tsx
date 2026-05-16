@@ -28,7 +28,7 @@ export default function Experience() {
         subtitle="Ruoli e impatto con focus su .NET e soluzioni integrate."
       />
       <motion.div
-        className="relative space-y-5 before:absolute before:bottom-0 before:left-3 before:top-0 before:w-px before:bg-slate-200 md:before:left-4"
+        className="grid gap-5 lg:grid-cols-2"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -38,19 +38,19 @@ export default function Experience() {
           <motion.article
             key={`${exp.company}-${exp.period}`}
             variants={item}
-            className="relative ml-9 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl hover:shadow-slate-200/80 md:ml-12"
+            className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/85 p-6 shadow-soft backdrop-blur transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl hover:shadow-slate-200/80 dark:border-white/10 dark:bg-slate-900/82 dark:hover:border-teal-400/60 dark:hover:shadow-slate-950/40"
           >
-            <span className="absolute -left-[2.05rem] top-7 h-4 w-4 rounded-full border-4 border-white bg-teal-600 shadow md:-left-[2.55rem]" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-teal-500 via-sky-400 to-amber-400" />
             <div className="relative flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-3 text-sm">
-                <span className="font-semibold text-slate-500">{exp.period}</span>
-                <span className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-teal-800">
+                <span className="font-semibold text-slate-500 dark:text-slate-400">{exp.period}</span>
+                <span className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-teal-800 dark:bg-teal-400/10 dark:text-teal-100">
                   {exp.company}
                 </span>
               </div>
-              <h3 className="font-display text-2xl font-semibold text-slate-950">{exp.role}</h3>
-              <p className="leading-7 text-slate-600">{exp.summary}</p>
-              <ul className="mt-2 space-y-2 text-slate-600">
+              <h3 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">{exp.role}</h3>
+              <p className="leading-7 text-slate-600 dark:text-slate-300">{exp.summary}</p>
+              <ul className="mt-2 space-y-2 text-slate-600 dark:text-slate-300">
                 {exp.impact.map((line) => (
                   <li key={line} className="flex gap-2">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
@@ -62,7 +62,7 @@ export default function Experience() {
                 {exp.stack.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700"
+                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700 dark:bg-white/10 dark:text-slate-200"
                   >
                     {skill}
                   </span>

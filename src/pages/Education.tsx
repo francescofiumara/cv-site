@@ -33,14 +33,14 @@ export default function Education() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.35, delay: idx * 0.08 }}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft"
+            className="rounded-2xl border border-white/70 bg-white/85 p-6 shadow-soft backdrop-blur dark:border-white/10 dark:bg-slate-900/82"
           >
             <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-              <h3 className="font-display text-xl font-semibold text-slate-950">{item.title}</h3>
-              <span className="text-sm font-semibold text-slate-500">{item.period}</span>
+              <h3 className="font-display text-xl font-semibold text-slate-950 dark:text-white">{item.title}</h3>
+              <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.period}</span>
             </div>
-            <div className="mt-1 text-sm font-semibold text-teal-800">{item.school}</div>
-            <p className="mt-3 leading-7 text-slate-600">{item.details}</p>
+            <div className="mt-1 text-sm font-semibold text-teal-800 dark:text-teal-200">{item.school}</div>
+            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">{item.details}</p>
           </motion.article>
         ))}
       </div>
